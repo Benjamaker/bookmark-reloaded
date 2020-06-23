@@ -1,3 +1,3 @@
-require_relatvice './app'
+require_relative './app'
 
 run BookmarkManager
