@@ -21,6 +21,7 @@ require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
 require 'rubocop'
+require 'pg'
 
 Capybara.app = BookmarkManager
 #
