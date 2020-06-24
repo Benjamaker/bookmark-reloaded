@@ -1,7 +1,7 @@
 class Bookmark
   
   def self.all
-    if ENV == 'test'
+    if ENV['RACK_ENV'] == 'test'
       p "connecting to test database"
       connection = PG.connect( dbname: 'bookmark_reloaded_test')
     else 
