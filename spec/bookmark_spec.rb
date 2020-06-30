@@ -14,4 +14,12 @@ describe Bookmark do
       expect(bookmarks[2]).to eq('https://www.linkedin.com')
     end
   end
+
+  context '.add' do
+    it "adds a new bookmark" do
+      Bookmark.add(url: "https://www.testtube.com")
+
+      expect(Bookmark.all).to include "https://www.testtube.com"
+    end 
+  end    
 end       

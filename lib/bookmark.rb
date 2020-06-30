@@ -14,4 +14,14 @@ class Bookmark
     end  
   end  
 
+  def self.add(url:)
+    if ENV['RACK_ENV'] == 'test'
+      p "connecting to test database"
+      connection = PG.connect( dbname: 'bookmark_reloaded_test')
+    else 
+      p "connecting to development database"
+      connection = PG.connect( dbname: 'bookmark_reloaded')  
+    end
+    result = connection.exec("INSERT INTO bookmarks (url) VALUES ('#{url}')")
+  end
 end  
