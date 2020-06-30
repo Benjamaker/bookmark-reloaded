@@ -4,10 +4,9 @@ describe Bookmark do
 
   context '.all' do
     it 'returns a list of bookmarks' do
-      connection = PG.connect(dbname: 'bookmark_reloaded_test')
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://github.com/Benjamaker');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://www.google.com');")
-      connection.exec("INSERT INTO bookmarks (url) VALUES ('https://www.linkedin.com');")
+      Bookmark.add(url: 'https://github.com/Benjamaker')
+      Bookmark.add(url: 'https://www.google.com')
+      Bookmark.add(url: 'https://www.linkedin.com')
       bookmarks = Bookmark.all
       expect(bookmarks[0]).to eq('https://github.com/Benjamaker')
       expect(bookmarks[1]).to eq('https://www.google.com')
