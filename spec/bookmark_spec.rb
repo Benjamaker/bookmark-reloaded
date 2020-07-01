@@ -23,4 +23,13 @@ describe Bookmark do
       expect(bookmark.title).to eq "Test"
     end 
   end    
+
+  context '.delete' do
+    it "deletes a bookmark" do
+      bookmark = bookmark = Bookmark.add(url: "https://www.testdelete.com", title: "Test_Delete")
+      Bookmark.delete(id: bookmark.id)
+      bookmarks = Bookmark.all
+      expect(bookmarks.length).to eq 0
+    end
+  end    
 end       
