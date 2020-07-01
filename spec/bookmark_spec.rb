@@ -31,5 +31,29 @@ describe Bookmark do
       bookmarks = Bookmark.all
       expect(bookmarks.length).to eq 0
     end
-  end    
-end       
+  end
+  
+  context '.update' do
+    it "updates an existing bookmark with new data given" do
+      bookmark = Bookmark.add(url: "https://testupdate.com", title: "Test_up")
+      updated_bookmark = Bookmark.update(id: bookmark.id, url: "https://testupdatedone.com", title: "Test_Updated")
+      expect(updated_bookmark).to be_a Bookmark 
+      expect(updated_bookmark.id).to eq bookmark.id
+      expect(updated_bookmark.url).to eq "https://testupdatedone.com"
+      expect(updated_bookmark.title).to eq "Test_Updated"     
+    end       
+  end  
+
+  context '.find' do
+    it "returns the requested bookmark object from the id" do
+      bookmark = Bookmark.add(url: "https://testfind.com", title: "Test_find")
+      result = Bookmark.find(id: bookmark.id)
+      expect(result).to be_a Bookmark
+      expect(result.id).to eq bookmark.id
+      expect(result.url).to eq "https://testfind.com"
+      expect(result.title).to eq "Test_find"
+    end
+  end 
+
+
+end
