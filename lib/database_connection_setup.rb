@@ -5,5 +5,5 @@ if ENV['RACK_ENV'] == 'test'
   DatabaseConnection.setup('bookmark_reloaded_test')
 else 
   p "connecting to development database"
-  DatbaseConnection.setup('bookmark_reloaded')  
+  DatabaseConnection.setup('bookmark_reloaded')  
 end

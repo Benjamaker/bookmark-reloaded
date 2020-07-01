@@ -25,6 +25,11 @@
           1,
           1,
           1,
+          null,
+          null,
+          1,
+          1,
+          1,
           1,
           null,
           null,
@@ -147,6 +152,20 @@
           null
         ]
       },
+      "/Users/isabelleben/Projects/bookmarkReloaded/spec/features/validating_bookmarks_spec.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/isabelleben/Projects/bookmarkReloaded/spec/features/view_bookmarks_spec.rb": {
         "lines": [
           1,
@@ -165,6 +184,6 @@
         ]
       }
     },
-    "timestamp": 1593634270
+    "timestamp": 1593637103
   }
 }

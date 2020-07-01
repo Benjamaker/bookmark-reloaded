@@ -17,11 +17,16 @@ describe Bookmark do
   end
 
   context '.add' do
+    it "doesn't add the bookmark if the url is incorrect" do
+      Bookmark.add(url: "not a url", title: "Fake url")
+      expect(Bookmark.all).to be_empty
+    end  
+
     it "adds a new bookmark" do
       bookmark = Bookmark.add(url: "https://www.testtube.com", title: "Test")
       expect(bookmark.url).to eq "https://www.testtube.com"
       expect(bookmark.title).to eq "Test"
-    end 
+    end   
   end    
 
   context '.delete' do
