@@ -3,6 +3,7 @@ require './lib/bookmark'
 require './lib/database_connection_setup'
 require 'uri'
 require 'sinatra/flash'
+require './lib/comment'
 
 class BookmarkManager < Sinatra::Base
 
@@ -38,10 +39,20 @@ class BookmarkManager < Sinatra::Base
   end  
 
   patch '/bookmarks/:id' do
-    Bookmark.update(id: params['id'], url: params['url'], title: params['title'])
+    Bookmark.update(id: params[:id], url: params[:url], title: params[:title])
     redirect('/bookmarks')
   end
 
+  get '/bookmarks/:id/comments/add' do
+    @bookmark_id = params[:id]
+    erb :'/comments/add'
+  end  
+
+  post '/bookmarks/:id/comments' do
+    Comment.add(bookmark_id: params[:id], text: params[:text])
+    redirect '/bookmarks'
+  end   
+    
   
 
   

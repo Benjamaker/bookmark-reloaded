@@ -10,11 +10,21 @@
       </form>
       <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
         <input type="submit" value="Edit" />
-      </form>  
+      </form>
+      <form action="/bookmarks/<%= bookmark.id %>/comments/add" method="get">
+        <input type="submit" value="Comment" />
+      </form> 
+      <ul>
+        <% bookmark.comments.each do |comment| %> 
+          <li><%= comment.text %></li>
+        <% end %>
+      </ul>    
     </li>
   <% end %>
 </ul>
-<p>
-  <%= flash[:notice] %>
-</p>
+<h2>
+  <p>
+    <%= flash[:notice] %>
+  </p>
+</h2>
 

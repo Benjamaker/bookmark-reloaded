@@ -60,5 +60,21 @@ describe Bookmark do
     end
   end 
 
+  let(:comment_class) { double(:comment_class) }
+
+  context '#comments' do
+    it "returns a list of the comments on a bookmark" do
+      bookmark = Bookmark.add(url: "https://testcomments.com", title: "Test_Comments")
+      DatabaseConnection.query("INSERT INTO comments (text, bookmark_id) VALUES('Test comment', #{bookmark.id});")
+      comment = bookmark.comments.first
+      expect(comment.text).to eq 'Test comment'
+    end
+
+    it "calls .where on the Comment class" do
+      bookmark = Bookmark.add(url: "https://testcomments.com", title: "Test_Comments")
+      expect(comment_class).to receive(:where).with(bookmark_id: bookmark.id)
+      bookmark.comments(comment_class)
+    end  
+  end    
 
 end
