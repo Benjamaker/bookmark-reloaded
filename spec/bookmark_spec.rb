@@ -77,4 +77,14 @@ describe Bookmark do
     end  
   end    
 
+  let(:tag_class) { double(:tag_class) }
+
+  context '#tags' do
+    it "calls .where on the Tag class" do 
+      bookmark = Bookmark.add(url: "https://testtags.com", title: "Tags_Test")
+      expect(tag_class).to receive(:where).with(bookmark_id: bookmark.id)
+      bookmark.tags(tag_class)
+    end
+  end
+
 end

@@ -14,14 +14,27 @@
       <form action="/bookmarks/<%= bookmark.id %>/comments/add" method="get">
         <input type="submit" value="Comment" />
       </form> 
-      <ul>
-        <% bookmark.comments.each do |comment| %> 
-          <li><%= comment.text %></li>
-        <% end %>
-      </ul>    
-    </li>
-  <% end %>
-</ul>
+      <form action="/bookmarks/<%= bookmark.id %>/tags/add" method="get">
+        <input type="submit" value="Add Tag" />
+      </form> 
+      <div>
+        <h4>Comments</h4>
+        <ul>
+          <% bookmark.comments.each do |comment| %> 
+            <li><%= comment.text %></li>
+          <% end %>
+        </ul>    
+      </div>  
+      <div>
+        <h4>Tags</h4>
+        <ul>
+          <% bookmark.tags.each do |tag| %> 
+            <li><%= tag.content %></li>
+          <% end %>  
+        </ul>  
+      </li>
+    <% end %>
+  </ul>
 <h2>
   <p>
     <%= flash[:notice] %>
